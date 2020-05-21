@@ -421,6 +421,7 @@ GameObject:
   - component: {fileID: 449540670661358611}
   - component: {fileID: 3365006053809523649}
   - component: {fileID: 485900436328666103}
+  - component: {fileID: 498193745}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
@@ -503,6 +504,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!65 &498193745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144297869516007336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.7771057, z: 1.5}
+  m_Center: {x: 0, y: -0.107370555, z: 0.037907124}
 --- !u!1 &4754300582687295194
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +622,7 @@ GameObject:
   - component: {fileID: 4800028729486366533}
   - component: {fileID: 8527332358322720451}
   - component: {fileID: 627744934102712989}
+  - component: {fileID: 248410761}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -690,6 +705,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!65 &248410761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083696295484264468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.43398046, z: 1.5}
+  m_Center: {x: -0.034323156, y: -0.78300977, z: -0.07907498}
 --- !u!1 &6472561990740275967
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,13 +770,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472561990740275967}
   serializedVersion: 2
-  m_Mass: 0.35
-  m_Drag: 0
+  m_Mass: 1
+  m_Drag: 0.3
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!114 &483291690
 MonoBehaviour:
@@ -762,6 +790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f5bc6f6ccae2c4990785653e0beb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rcsThrust: 250
+  mainThrust: 5
 --- !u!82 &1847139708675383201
 AudioSource:
   m_ObjectHideFlags: 0
