@@ -4,11 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class rocket : MonoBehaviour
 {
+    // Control cohete
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+
+    //Sonidos cohete
     [SerializeField] AudioClip mainEngine;
-    [SerializeField] AudioClip deathShip;
-    [SerializeField] AudioClip nextLevel;
+    [SerializeField] AudioClip death;
+    [SerializeField] AudioClip sucess;
+
+    //Particulas cohete
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem deathParticles;
+    [SerializeField] ParticleSystem sucessParticles;
 
 
     Rigidbody rigidBody;
@@ -44,25 +52,27 @@ public class rocket : MonoBehaviour
                 //Do nothing
                 break;
             case "Finish":
-                AccionesFinish();
+                StartSucessSequence();
                 break;
             default:
-                AccionesMuerte();
+                StartDeathSequence();
                 break;
         }
     }
-    private void AccionesFinish()
+    private void StartSucessSequence()
     {
         state = State.Transcending;
         audioSource.Stop();
-        audioSource.PlayOneShot(nextLevel);
+        audioSource.PlayOneShot(sucess);
+        sucessParticles.Play();
         Invoke("LoadNextScene", 1f);
     }
-    private void AccionesMuerte()
+    private void StartDeathSequence()
     {
         state = State.Dying;
         audioSource.Stop();
-        audioSource.PlayOneShot(deathShip);
+        audioSource.PlayOneShot(death);
+        deathParticles.Play();
         Invoke("LoadFirstLevel", 1f);
     }
 
@@ -77,7 +87,7 @@ public class rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        float thrustThisFrame = mainThrust * Time.deltaTime;
+        
         if (Input.GetKey(KeyCode.Space))
         {
             ApplyThrust();
@@ -85,6 +95,7 @@ public class rocket : MonoBehaviour
         else
         {
             audioSource.Stop();
+            mainEngineParticles.Stop();
         }
     }
 
@@ -96,6 +107,9 @@ public class rocket : MonoBehaviour
         {
             audioSource.PlayOneShot(mainEngine);
         }
+
+        mainEngineParticles.Play();
+
     }
 
     private void RespondToRotateInput()
