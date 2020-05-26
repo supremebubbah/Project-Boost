@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,7 @@ public class rocket : MonoBehaviour
     enum State { Alive, Dying, Transcending}
     State state = State.Alive;
 
+    bool collisionDisable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +43,28 @@ public class rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKey();
+        }
+        
+    }
+
+    private void RespondToDebugKey()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisable = !collisionDisable; //toggle
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state!= State.Alive) { return; }
+        if (state!= State.Alive || collisionDisable) { return; }
        
         switch (collision.gameObject.tag)
         {
@@ -66,7 +85,7 @@ public class rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(sucess);
         sucessParticles.Play();
-        Invoke("LoadNextScene", levelLoadDelay);
+        Invoke("LoadNextLevel", levelLoadDelay);
     }
     private void StartDeathSequence()
     {
@@ -77,7 +96,7 @@ public class rocket : MonoBehaviour
         Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
-    private void LoadNextScene()
+    private void LoadNextLevel()
     {
         SceneManager.LoadScene(1);
     }
