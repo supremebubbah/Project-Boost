@@ -734,17 +734,17 @@ PrefabInstance:
     - target: {fileID: 7968647194179475558, guid: fe00d80f23a54b24ca4ae6eb77459f68,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9
+      value: -3.2
       objectReference: {fileID: 0}
     - target: {fileID: 7968647194179475558, guid: fe00d80f23a54b24ca4ae6eb77459f68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.4
+      value: -30.1
       objectReference: {fileID: 0}
     - target: {fileID: 7968647194179475558, guid: fe00d80f23a54b24ca4ae6eb77459f68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.9
+      value: -19.6
       objectReference: {fileID: 0}
     - target: {fileID: 7968647194179475558, guid: fe00d80f23a54b24ca4ae6eb77459f68,
         type: 3}
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798fc8d5cf56e0a47b74e1bdacb08a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: -40, z: 0}
+  movementVector: {x: 0, y: 40, z: 0}
   period: 4
 --- !u!1 &778941245
 GameObject:
@@ -2664,6 +2664,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306213180993586755, guid: bbd254907be68714580255e73750b84b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 55.566
       objectReference: {fileID: 0}
     - target: {fileID: 3306213180993586783, guid: bbd254907be68714580255e73750b84b,
         type: 3}
