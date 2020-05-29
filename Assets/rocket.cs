@@ -117,6 +117,7 @@ public class rocket : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             ApplyThrust();
+            Debug.Log("Thrust= " + mainThrust); //añadido nuevo para solucion problema
         }
         else
         {
@@ -128,7 +129,7 @@ public class rocket : MonoBehaviour
     private void ApplyThrust()
     {
         rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-       
+               
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
