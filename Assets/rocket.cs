@@ -27,6 +27,7 @@ public class rocket : MonoBehaviour
     State state = State.Alive;
 
     bool collisionDisable = false;
+    bool isThrusting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -113,11 +114,11 @@ public class rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        
-        if (Input.GetKey(KeyCode.Space))
+        isThrusting = Input.GetKey(KeyCode.Space);
+
+        if (isThrusting)
         {
             ApplyThrust();
-            Debug.Log("Thrust= " + mainThrust); //añadido nuevo para solucion problema
         }
         else
         {
@@ -128,15 +129,20 @@ public class rocket : MonoBehaviour
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-               
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
         }
 
         mainEngineParticles.Play();
+    }
 
+    private void FixedUpdate()
+    {
+        if (isThrusting)
+        {
+            rigidBody.AddRelativeForce(Vector3.up * mainThrust, ForceMode.Acceleration);
+        }
     }
 
     private void RespondToRotateInput()
